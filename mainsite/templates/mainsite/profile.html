@@ -19,20 +19,25 @@
 
 <!user projects>
 <div id="userprojects" class="w3-container">
-  {% if project %}
+  {% if projects %}
     <h3 class="w3-center w3-text-deep-orange">Ongoing Projects</h3>
     {% for p in projects %}
       {% if not p.completed %}
       <div class="w3-container w3-row-padding w3-card-4 proj">
       <h5 class="w3-center">{{p.name}}</h5>
-        <div class="w3-container w3-col s4"> 
+        <div class="w3-container w3-col s4">
           <img src="{{p.picFilename}}">
         </div>
         <div class="w3-container w3-col s8">
           <p>{{p.description}}</p>
           <a href="{{p.github}}">Github Link</a>
-          <p>Contributers: {{p.contributers}}</p>
-           <a href="/profile/editproject/{{p.name}}"><button class="w3-btn w3-blue">Edit Project</button></a>
+           <a href="/profile/editproject/{{p.serial}}"><button class="w3-btn w3-blue">Edit Project</button></a>
+        </div>
+        <div class="w3-container">
+          <p>Contributers</p>
+          {% for c in p.contributers.all %}
+          <li><p>{{c}}</p></li>
+          {% endfor %}
         </div>
       </div>
       {% endif %}
@@ -42,19 +47,24 @@
       {% if p.completed %}
       <div class="w3-container w3-row-padding w3-card-4 proj">
       <h5 class="w3-center">{{p.name}}</h5>
-        <div class="w3-container w3-col s4"> 
+        <div class="w3-container w3-col s4">
           <img src="{{p.picFilename}}">
         </div>
         <div class="w3-container w3-col s8">
           <p>{{p.description}}</p>
           <a href="{{p.github}}">Github Link</a>
-          <p>Contributers: {{p.contributers}}</p>
-          <a href="/profile/editproject/{{p.name}}"><button class="w3-btn w3-blue">Edit Project</button></a>
+          <a href="/profile/editproject/{{p.serial}}"><button class="w3-btn w3-blue">Edit Project</button></a>
+        </div>
+        <div class="w3-container">
+          <p>Contributers</p>
+          {% for c in p.contributers.all %}
+          <li><p>{{c}}</p></li>
+          {% endfor %}
         </div>
       </div>
       {% endif %}
     {% endfor %}
-    
+
   {% else %}
     <h3 class="w3-center w3-text-deep-orange">No projects to show!</h3>
   {% endif %}

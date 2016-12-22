@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = '/profile'
+LOGIN_URL = '/login'
+
 
 # Application definition
 
@@ -38,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainsite',
+    'django_extensions',
     #'loginfo',
 )
 
@@ -65,7 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-               # 'loginfo.context_processors.login_info',
+                #'loginfo.context_processors.login_info',
             ],
         },
     },
