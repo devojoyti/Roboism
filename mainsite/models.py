@@ -15,7 +15,7 @@ class Member(models.Model):
         ('Final Year','Final Year'),
         ('Alumni','Alumni'),
     )
-    pic = models.ImageField(upload_to='./mainsite/static/',blank=True)
+    pic = models.ImageField(upload_to='images/', blank=True)
     username = models.CharField(default="Username", max_length=20)
     name = models.CharField(default="Name", max_length=50, blank=True)
     email = models.EmailField()
@@ -25,24 +25,26 @@ class Member(models.Model):
     year = models.CharField(choices=year_choice, max_length=12,blank=True)
     bio = models.TextField(default="Lorem ipsum sit dolot fuck this shit !",blank=True)
     linkedin = models.URLField(blank=True)
-    resume = models.FileField(blank=True,upload_to='./mainsite/static')
+    resume = models.FileField(upload_to='files/', blank=True)
     active = models.BooleanField()
 
     def __str__(self):
         return self.name
 
     @property
-    def resumeFilename(self,):
-        return  os.path.basename(self.resume.name)
+    def pic_url(self):
+        if self.pic and hasattr(self.pic, 'url'):
+            return self.pic.url
 
     @property
-    def picFilename(self,):
-        return  os.path.basename(self.pic.name)
+    def resume_url(self):
+        if self.resume and hasattr(self.resume, 'url'):
+            return self.resume.url
 
 
 class Project(models.Model):
     serial = models.AutoField(primary_key=True)
-    pic = models.ImageField(blank=True)
+    pic = models.ImageField(upload_to='images/', blank=True)
     name = models.CharField(default="Name", max_length=50)
     description = models.TextField(default="Shitty Project")
     github = models.URLField(blank=True)
@@ -53,5 +55,6 @@ class Project(models.Model):
         return self.name
 
     @property
-    def picFilename(self,):
-        return  os.path.basename(self.pic.name)
+    def pic_url(self):
+        if self.pic and hasattr(self.pic, 'url'):
+            return self.pic.url
