@@ -14,7 +14,7 @@ RoboISM is the official site of Robotics Club ISM Dhanbad. Well right now it is 
   For Window Users:-
   ```C:\Python34\python -m venv myvenv```<br>
   For Linux Users and OS X Users:-
-  ```python 3 -m venv myvenv```<br>
+  ```python3 -m venv myvenv```<br>
 
 * Then do <br>
   For Window Users:- ```myvenv\Scripts\activate```<br>
@@ -23,12 +23,12 @@ RoboISM is the official site of Robotics Club ISM Dhanbad. Well right now it is 
   Now, you should see a (myvenv) script before cmd commands. <br>
 
 * Now, do
-  ```pip install django==1.9.7```
+  ```pip install django```
 
 * After installation is complete, do
-  ```python manage.py makemigration mainsite```
+  ```python manage.py makemigrations```
   And 
-  ```python manage.py migrate mainsite```
+  ```python manage.py migrate```
   And
   ```python manage.py collectstatic```
 
