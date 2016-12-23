@@ -4,7 +4,7 @@
 <! user details>
 <div id="userdetails" class="w3-container w3-row-padding w3-card-4 student">
   <div class="w3-container w3-col s4">
-    <img src="{{member.picFilename}}">
+    <img src={{ member.pic_url|default_if_none:'#' }}>
     {{member.resume.name}}
   </div>
   <div class="w3-container w3-col s8">
@@ -12,7 +12,7 @@
     <p>Branch: {{member.branch}}</p>
     <p>E-mail id: {{ member.email }}</p>
     <a href={{member.linkedin}} alt="LinkedIn Account" title="LinkedIn Account"><img src="/static/linkedin.png"></a>
-    <p style="padding-top:3px;">Download Resume <a id="download" href={{member.resumeFilename}} <i class="material-icons">file_download</i></a></p>
+    <p style="padding-top:3px;">Download Resume <a id="download" href={{ member.resume_url|default_if_none:'#' }} <i class="material-icons">file_download</i></a></p>
     <a href="/profile/edit"><button class="w3-btn w3-blue">Edit Details</button></a>
   </div>
 </div>
@@ -26,7 +26,7 @@
       <div class="w3-container w3-row-padding w3-card-4 proj">
       <h5 class="w3-center">{{p.name}}</h5>
         <div class="w3-container w3-col s4">
-          <img src="{{p.picFilename}}">
+          <img src={{ p.pic_url|default_if_none:'#' }}>
         </div>
         <div class="w3-container w3-col s8">
           <p>{{p.description}}</p>
@@ -48,7 +48,7 @@
       <div class="w3-container w3-row-padding w3-card-4 proj">
       <h5 class="w3-center">{{p.name}}</h5>
         <div class="w3-container w3-col s4">
-          <img src="{{p.picFilename}}">
+          <img src={{ p.pic_url|default_if_none:'#' }}>
         </div>
         <div class="w3-container w3-col s8">
           <p>{{p.description}}</p>

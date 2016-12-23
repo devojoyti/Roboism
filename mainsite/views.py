@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from .forms import *
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.contrib.auth import authenticate, login
+from django.core.files.storage import FileSystemStorage
 
 def register(request):
     if request.method == 'POST':
@@ -83,7 +84,6 @@ def projects(request):
         project = Project.objects.all()
         class Count:
                 total = ongoing = completed = 0
-
         count = Count()
         for p in project:
                 if p.completed:
@@ -119,7 +119,7 @@ def completed_projects(request):
 
 def fill_info(request):
         if request.method == 'POST':
-                details = MemberForm(request.POST)
+                details = MemberForm(request.POST, request.FILES)
                 if details.is_valid():
                         member = details.save(commit=False)
                         if request.user.is_authenticated:
@@ -135,7 +135,7 @@ def fill_info(request):
 @login_required
 def editprofile(request):
     obj = get_object_or_404(Member, username=request.user.username)
-    form = MemberForm(request.POST or None, instance=obj)
+    form = MemberForm(request.POST or None, request.FILES or None, instance=obj)
     if form.is_valid():
         form.save()
         return HttpResponseRedirect('/profile/')
@@ -144,7 +144,7 @@ def editprofile(request):
 @login_required
 def addproject(request):
         if request.method == 'POST':
-                project = ProjectForm(request.POST)
+                project = ProjectForm(request.POST, request.FILES)
                 if project.is_valid():
                         project.save()
                         return HttpResponseRedirect('/profile/')
@@ -155,7 +155,7 @@ def addproject(request):
 @login_required
 def editproject(request, proj):
         project = get_object_or_404(Project, serial=proj)
-        form = ProjectForm(request.POST or None, instance=project)
+        form = ProjectForm(request.POST or None, request.FILES or None, instance=project)
         if form.is_valid():
                 form.save()
                 return HttpResponseRedirect('/profile/')

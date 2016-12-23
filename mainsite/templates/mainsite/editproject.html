@@ -1,8 +1,8 @@
 {% extends "mainsite/base.html" %}
 {% block content %}
 
-	<div class="w3-container">
-		<form id="fill_info" class="w3-container" method="POST" class="post-form">{% csrf_token %}
+	<div class="w3-container formclass">
+		<form id="fill_info" class="w3-container" method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
 			{{ form.as_p }}
 		<button type="submit" class="save w3-btn w3-round-xlarge w3-blue w3-hover-red">Save</button>
 		</form>
