@@ -6,7 +6,7 @@ from .models import *
 
 class RegistrationForm(forms.Form):
     username = forms.RegexField(regex=r'^\w+$', required=True, max_length=30, widget=forms.TextInput(attrs={'class':'inputfield w3-input w3-border'}), label=_("Username"), error_messages={ 'invalid': _("This value must contain only letters, numbers and underscores.") })
-    email = forms.EmailField(required=True, max_length=30, widget=forms.TextInput(attrs={'class':'inputfield w3-input w3-border'}), label=_("Email address"))
+    email = forms.EmailField(required=True, max_length=50, widget=forms.TextInput(attrs={'class':'inputfield w3-input w3-border'}), label=_("Email address"))
     password1 = forms.CharField(required=True, max_length=30, widget=forms.PasswordInput(attrs={'class':'inputfield w3-input w3-border'}), label=_("Password"))
     password2 = forms.CharField(required=True, max_length=30, widget=forms.PasswordInput(attrs={'class':'inputfield w3-input w3-border'}), label=_("Password (again)"))
 
@@ -52,8 +52,9 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = '__all__'
+        exclude = ['serial']
         labels = {
-            'pic':_('Project Picture'), 'name':_('Project Name'), 'github':_('Github Link'), 
+            'pic':_('Project Picture'), 'name':_('Project Name'), 'github':_('Github Link'),
         }
         help_texts = {
             'pic':_('If present'), 'github':_('If present'), 'completed':_('Tick if project is complete'), 'contributers':_('Write the names of Members who were involved in the project correctly.')
@@ -64,12 +65,5 @@ class ProjectForm(forms.ModelForm):
             'description': forms.TextInput(attrs={'class':'w3-input w3-border'}),
             'github': forms.TextInput(attrs={'class':'w3-input w3-border'}),
             'completed': forms.TextInput(attrs={'class':'w3-input w3-border'}),
-            'contributers': forms.TextInput(attrs={'class':'w3-input w3-border'}),
+            'contributers': forms.CheckboxSelectMultiple(attrs={'class':'w3-input w3-border'}),
         }
-
-
-class ExpoProjectForm(forms.ModelForm):
-    class Meta:
-        model = ExpoProject
-        fields = '__all__'
-        

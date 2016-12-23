@@ -12,8 +12,8 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<script src="/static/jquery.backstretch.min.js"></script>
 		<script type="text/javascript" src="/static/dropdown-animation.js"></script>
-		<link href='https://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="/static/login.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Cormorant+Infant" rel="stylesheet">
 		<script type="text/javascript">
 			$(document).ready(function(){
 			 	$("#nav-bar li").mouseenter(function(){
@@ -68,31 +68,15 @@
 						<a id="_support" href="/support-us" class="w3-hover-black">Support Us!</a>
 					</li>
 					<li>
-						{% if not member %}
+						{% if not user.is_authenticated %}
 								<a href="/login" class="w3-hover-black">Login</a>
 						{% else %}
-							<a>Hello {{ member.name }}!</a>
+							<a>Hello {{ user.username }}!</a>
 							<a href="/logout/">Logout</a>
-							<a href="/userprofile/">Profile</a>
+							<a href="/profile/">Profile</a>
 
 						{% endif %}
 					</li>
-
-					<!-- <li class="w3-dropdown-click">
-						<p class="w3-hover-blue" onclick="open_login();" style="margin:0; padding-top:8px; padding-bottom:8px; padding-left:16px; padding-right:16px;">User Login</p>
-						<div id="login" class="w3-dropdown-content w3-card-4" style="right:0">
-							<form class="w3-container">
-								<label><p class="lg" >User Name</p></label>
-								<input class="w3-input" type="text">
-								<label><p class="lg" >Password</p></label>
-								<input class="w3-input" type="text">
-							</form>
-
-						</div>
-						<div id="logged" class="w3-dropdown-content w3-card-4">
-
-						</div>
-					</li> -->
 				</ul>
 			</div>
 		</div>
@@ -115,9 +99,6 @@
 		<!footer>
 		<footer id="foot" class="w3-row-padding">
 			<div class="w3-col s6 w3-container">
-				<!-- <a>Logged in as {{ user.username }}</a>
-				<a href="/logout/">Logout</a> -->
-				<!-- <h5>For Nerds</h5> -->
 				<p>
 					Crafted with  <a id="cup" href="https://www.facebook.com/roboism/"><img src="/static/food.svg"></a>
 					by <a href="http://markroxor.in/">markroxor</a><br>
