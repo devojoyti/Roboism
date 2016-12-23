@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Member, Project
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_protect
@@ -46,7 +46,14 @@ def userprofile(request):
     if request.user.is_authenticated:
         member = Member.objects.get(username=request.user.username)
         projects = member.project_set.all()
-        return render(request, 'mainsite/profile.html', {'member':member, 'projects':projects})
+        completed_projects = []
+        ongoing_projects = []
+        for p in projects:
+            if p.completed:
+                completed_projects.append(p)
+            else:
+                ongoing_projects.append(p)
+        return render(request, 'mainsite/profile.html', {'member':member, 'completed_projects':completed_projects, 'ongoing_projects':ongoing_projects})
     else:
         return HttpResponseRedirect('/login')
 
@@ -160,3 +167,18 @@ def editproject(request, proj):
                 form.save()
                 return HttpResponseRedirect('/profile/')
         return render(request, 'mainsite/editproject.html', {'form':form})
+
+def member_details(request, user_id):
+    try:
+        member = Member.objects.get(username=user_id)
+        projects = member.project_set.all()
+    except:
+        raise Http404("Member data does not exist!")
+    completed_projects = []
+    ongoing_projects = []
+    for p in projects:
+        if p.completed:
+            completed_projects.append(p)
+        else:
+            ongoing_projects.append(p)
+    return render(request, 'mainsite/member-details.html', {'member':member, 'completed_projects':completed_projects, 'ongoing_projects':ongoing_projects})

@@ -16,6 +16,8 @@ urlpatterns = [
 	url(r'^support-us/$', views.support_us, name='support_us'),
 	url(r'^members/alumni/$', views.alumni, name='alumni'),
 	url(r'^members/active/$', views.active_members, name='active_members'),
+	url(r'^members/active/(\w+)/$', views.member_details, name='member_details'),
+	url(r'^members/alumni/(\w+)/$', views.member_details, name='member_details'),
     url(r'^login/',auth_views.login, name="auth_views.login"),
     url(r'^home/', views.index, name='index'),
     url(r'^logout/$', views.logout_page),
