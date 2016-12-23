@@ -1,4 +1,4 @@
-{% extends 'mainsite/base.html' %}
+			{% extends 'mainsite/base.html' %}
 {% block content %}
 		<style type="text/css">
 			#_projects{
@@ -21,15 +21,15 @@
 			<div id="project-classify" class="w3-container w3-row-padding">
 				<div class="w3-container w3-col s6">
 					<a href="/projects/completed" class="w3-left" title="completed projects">
-						<h5>Completed Projects</h5>
-						<img class="pic" src="/static/completed.jpg">
+						<h5 class="w3-center">Completed Projects</h5>
+						<img class="pic" src="/static/completed.JPG">
 					</a>
 					<p class="w3-left">Total Projects : {{ count.completed }}</p>
 				</div>
 				<div class="w3-container w3-col s6">
 					<a href="/projects/ongoing" class="w3-right" title="ongoing projects">
-						<h5>Ongoing Projects</h5>
-						<img class="pic" src="/static/ongoing.jpg">
+						<h5 class="w3-center">Ongoing Projects</h5>
+						<img class="pic" src="/static/ongoing.JPG">
 					</a>
 					<p class="w3-right">Total Projects : {{ count.ongoing }}</p>
 				</div>
