@@ -23,7 +23,7 @@ class Member(models.Model):
     work = models.CharField(default="Company/University", max_length=50,blank=True)
     DOB = models.DateField(_("Date"), default=date.today)
     year = models.CharField(choices=year_choice, max_length=12,blank=True)
-    bio = models.TextField(default="Lorem ipsum sit dolot fuck this shit !",blank=True)
+    bio = models.TextField(default="...",blank=True)
     linkedin = models.URLField(blank=True)
     resume = models.FileField(upload_to='files/', blank=True)
     active = models.BooleanField()

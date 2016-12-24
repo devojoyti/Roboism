@@ -13,7 +13,7 @@
 	margin: 0;
 }
 
-#login form{
+#login{
 	padding-top: 10px;
 	padding-bottom: 20px;
 }
@@ -23,7 +23,6 @@
 	max-height: 50px;
 	padding-top: 10px;
 }
-
 
 /* Common */
 
@@ -245,7 +244,7 @@
 	padding-bottom: 200px;
 }
 
-#login label, input{
+#login input{
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -296,10 +295,10 @@
 
 .formclass{
 	position: relative;
-	padding-top: 100px;
+	padding-top: 50px;
 	padding-bottom: 50px;
-	padding-left: 20%;
-	padding-right: 20%;
+	padding-left: 5%;
+	padding-right: 5%;
 }
 
 
