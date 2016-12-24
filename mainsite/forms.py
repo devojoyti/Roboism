@@ -72,3 +72,9 @@ class ProjectForm(forms.ModelForm):
             'contributers': forms.CheckboxSelectMultiple(attrs={'class':'w3-input w3-border'}),
         }
 '''
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = '__all__'
+        exclude = ['date']

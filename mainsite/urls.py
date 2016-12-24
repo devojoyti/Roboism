@@ -13,7 +13,7 @@ urlpatterns = [
 	url(r'^projects/completed/$', views.completed_projects, name='completed_projects'),
 	url(r'^projects/ongoing/$', views.ongoing_projects, name='ongoing_projects'),
 	url(r'^tutorials/$', views.tutorials, name='tutorials'),
-	url(r'^support-us/$', views.support_us, name='support_us'),
+	url(r'^contact/$', views.contact_us, name='contact_us'),
 	url(r'^members/alumni/$', views.alumni, name='alumni'),
 	url(r'^members/active/$', views.active_members, name='active_members'),
 	url(r'^members/active/(\w+)/$', views.member_details, name='member_details'),
@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^register/fill_info/$', views.fill_info, name='fill_info'),
 	url(r'^profile/addproject/$', views.addproject, name='addproject'),
 	url(r'^profile/editproject/(\d+)/$', views.editproject, name='editproject'),
+	url(r'^developers/$', views.developers, name="developers"),
 ]
 
 if settings.DEBUG:

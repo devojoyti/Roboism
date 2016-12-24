@@ -2,8 +2,8 @@
 
 #foot{
 	position: relative;
-	padding-left: 20%;
-	padding-right: 20%;
+	padding-left: 10%;
+	padding-right: 10%;
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
@@ -234,6 +234,26 @@
 	top:5px;
 }
 
+/* Contact Us */
+
+#contact{
+		position: relative;
+		padding-top: 100px;
+		padding-bottom: 100px;
+		margin-left: 5%;
+		margin-right: 5%;
+		padding-left: 10%;
+		padding-right: 10%;
+}
+#contact-form{
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-bottom: 50px;
+	padding-top: 10px;
+}
+.inp{
+	font-weight: normal;
+}
 /* registration */
 
 #registration{
@@ -301,6 +321,21 @@
 	padding-right: 5%;
 }
 
+/* Misc */
+
+#dev-team{
+	position: relative;
+	margin-left: 5%;
+	margin-right: 5%;
+	padding-left: 10%;
+	padding-right: 10%;
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+#dev-team p{
+	font-weight: normal;
+}
 
 /*ISM animation*/
 #ISM-animation{

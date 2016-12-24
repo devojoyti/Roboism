@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'mainsite',
     'django_extensions',
+    'widget_tweaks',
     #'loginfo',
 )
 
@@ -112,3 +113,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+'''
+TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DIRS = (
+    'C:/Documents/Roboism/mainsite/templates',
+)
+'''

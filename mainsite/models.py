@@ -58,3 +58,13 @@ class Project(models.Model):
     def pic_url(self):
         if self.pic and hasattr(self.pic, 'url'):
             return self.pic.url
+
+class Message(models.Model):
+    date = models.DateField(default=date.today)
+    name = models.CharField(max_length=50, blank="True")
+    email = models.EmailField()
+    subject = models.CharField(max_length=50, blank="True")
+    message = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.name

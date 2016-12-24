@@ -12,6 +12,7 @@ from .forms import *
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.contrib.auth import authenticate, login
 from django.core.files.storage import FileSystemStorage
+from django.utils import timezone
 
 def register(request):
     if request.method == 'POST':
@@ -105,8 +106,16 @@ def projects(request):
 def tutorials(request):
         return render(request, 'mainsite/tutorials.html', {})
 
-def support_us(request):
-        return render(request, 'mainsite/support-us.html', {})
+def contact_us(request):
+        if request.method == 'POST':
+            form = MessageForm(request.POST)
+            if form.is_valid():
+                form.date = timezone.now()
+                form.save()
+                return HttpResponseRedirect('/contact/success')
+        else:
+            form = MessageForm()
+        return render(request, 'mainsite/contact-us.html', {'form':form})
 
 def alumni(request):
         member = Member.objects.filter(active = False)
@@ -182,3 +191,6 @@ def member_details(request, user_id):
         else:
             ongoing_projects.append(p)
     return render(request, 'mainsite/member-details.html', {'member':member, 'completed_projects':completed_projects, 'ongoing_projects':ongoing_projects})
+
+def developers(request):
+    return render(request, 'mainsite/developers.html', {})
