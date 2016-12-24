@@ -265,26 +265,33 @@
 #userdetails{
 	position: relative;
 	margin-top: 100px;
-	padding-top: 100px;
+	padding-top: 50px;
 	margin-left: 5%;
 	margin-right: 5%;
 	padding-bottom: 50px;
-	padding-left: 5%;
-	padding-right: 5%;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 #userprojects{
 	position: relative;
 	margin-top: 50px;
 	margin-bottom: 50px;
-	margin-left: 5%;
-	margin-right: 5%;
 	padding-top: 50px;
 	padding-bottom: 50px;
-	padding-left: 5%;
-	padding-right: 5%;
 }
 
+.userproject-list{
+	position: relative;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
 /* Edit Profile */
 
 .formclass{
