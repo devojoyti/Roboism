@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Member, Project
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_protect
@@ -12,6 +12,7 @@ from .forms import *
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.contrib.auth import authenticate, login
 from django.core.files.storage import FileSystemStorage
+from django.utils import timezone
 
 def register(request):
     if request.method == 'POST':
@@ -46,7 +47,14 @@ def userprofile(request):
     if request.user.is_authenticated:
         member = Member.objects.get(username=request.user.username)
         projects = member.project_set.all()
-        return render(request, 'mainsite/profile.html', {'member':member, 'projects':projects})
+        completed_projects = []
+        ongoing_projects = []
+        for p in projects:
+            if p.completed:
+                completed_projects.append(p)
+            else:
+                ongoing_projects.append(p)
+        return render(request, 'mainsite/profile.html', {'member':member, 'completed_projects':completed_projects, 'ongoing_projects':ongoing_projects})
     else:
         return HttpResponseRedirect('/login')
 
@@ -98,8 +106,16 @@ def projects(request):
 def tutorials(request):
         return render(request, 'mainsite/tutorials.html', {})
 
-def support_us(request):
-        return render(request, 'mainsite/support-us.html', {})
+def contact_us(request):
+        if request.method == 'POST':
+            form = MessageForm(request.POST)
+            if form.is_valid():
+                form.date = timezone.now()
+                form.save()
+                return HttpResponseRedirect('/contact/success')
+        else:
+            form = MessageForm()
+        return render(request, 'mainsite/contact-us.html', {'form':form})
 
 def alumni(request):
         member = Member.objects.filter(active = False)
@@ -160,3 +176,21 @@ def editproject(request, proj):
                 form.save()
                 return HttpResponseRedirect('/profile/')
         return render(request, 'mainsite/editproject.html', {'form':form})
+
+def member_details(request, user_id):
+    try:
+        member = Member.objects.get(username=user_id)
+        projects = member.project_set.all()
+    except:
+        raise Http404("Member data does not exist!")
+    completed_projects = []
+    ongoing_projects = []
+    for p in projects:
+        if p.completed:
+            completed_projects.append(p)
+        else:
+            ongoing_projects.append(p)
+    return render(request, 'mainsite/member-details.html', {'member':member, 'completed_projects':completed_projects, 'ongoing_projects':ongoing_projects})
+
+def developers(request):
+    return render(request, 'mainsite/developers.html', {})

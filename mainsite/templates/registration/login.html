@@ -4,16 +4,28 @@
 
 {% block content %}
     {% if form.errors %}
-        <p class="w3-text-red">Your username and password didn't match. Please try again.</p>
-        <p><a href="#" class="w3-text-red">Or forgot your password?</a></p>
+        <p class="w3-text-red">Your username and/or password didn't match. Please try again.</p>
     {% endif %}
 
-    <form id="login" method="post" action="." class="w3-container">{% csrf_token %}
-        <label class="w3-label" for="id_username">Username </label>
-        {{ form.username }}
-        <label class="w3-label" for="id_password">Password </label>
-        {{ form.password }}
-        <input class="w3-btn w3-round-xxlarge w3-blue" type="submit" value="Submit">
-    </form>
-    <p>Not Registered Yet? New Member's register <a href="/register"><button class="w3-btn w3-round w3-small w3-blue">Here</button></a></p>
+    <div class="w3-container">
+      <div class="w3-container">
+        <form id="login" method="post" action="." class="w3-container">{% csrf_token %}
+          <table class="w3-table">
+            <tr>
+              <th style="padding-top:17px;"><label class="w3-label" for="id_username">Username </label></th>
+              <th>{{ form.username }}</th>
+            </tr>
+            <tr>
+              <th style="padding-top:17px;"><label class="w3-label" for="id_password">Password </label></th>
+              <th>{{ form.password }}</th>
+            </tr>
+            <tr>
+              <th></th>
+              <th><input class="w3-btn w3-large w3-blue w3-round" type="submit" value="Submit"></th>
+            </tr>
+        </table>
+        </form>
+      </div>
+      <p>Not Registered Yet? New Member's register <a href="/register"><button class="w3-btn w3-round w3-blue">Here</button></a></p>
+    </div>
 {% endblock %}

@@ -1,6 +1,13 @@
 {% extends 'mainsite/base.html' %}
 {% block content %}
 
+		<style type="text/css">
+			#_members{
+				background-color: rgb(244,67,54);
+				color: white;
+			}
+		</style>
+
 		<div id="heading" class="w3-container" style="padding-top:50px;">
 			<h3 class="w3-center">Alumni Member's of RoboISM</h3>
 		</div>
@@ -8,45 +15,42 @@
 			<h4 class="w3-center">Alumni Member's</h4>
 			{% for m in member %}
 			{% if m.active == False %}
-				<div class="w3-container w3-row-padding w3-card-4 student">
-					<div class="w3-container w3-col s3">
-						<img src="{{ m.pic.url }}">
-					</div>
-					<div class="w3-container w3-col s6">
-						<h5>{{ m.name }}</h5>
-						<p>Branch: {{m.branch}}</p>
-						<p>Mail Id: {{ m.email }}</p>
-						<p>Working/Studying in : {{ m.work }}</p>
-						<div class="w3-accordion">
-							<button class="w3-btn-block w3-left-align" onclick="open_bio();">About Me</button>
-							<div id="bio" class="w3-accordion-content">
-								<p>{{ m.bio }}</p>
-							</div>
-							<script type="text/javascript">
-								function open_bio() {
-								    var bio = document.getElementById("bio");
-								    var drop = document.getElementById("drop");
-								    if (bio.className.indexOf("w3-show") == -1){ 
-								        bio.className += " w3-show";
-								        bio.previousElementSibling.className += " w3-red";
-								    }
-								    else{ 
-								        bio.className = bio.className.replace(" w3-show", "");
-								        previousElementSibling.className = previousElementSibling.className.replace(" w3-red", "");
-								    }
-								}
-							</script>
-						</div>
-						<a href="#"><button style="margin-top:20px;" class="w3-btn w3-round-xxlarge w3-blue">See Project's of {{ m.name }}</button></a>
-					</div>
-					<div class="w3-container w3-col s3">
-						<a href="#" alt="LinkedIn Account" title="LinkedIn Account"><img src="/static/linkedin.png"></a>
-						<p style="padding-top:3px;">Download Resume <a id="download" href=""><i class="material-icons">file_download</i></a></p>
-					</div>
+			<div class="w3-container w3-row-padding w3-card-4 student">
+				<div class="w3-container w3-col s3">
+					<img class="profile-pic" src="{{ m.pic_url|default_if_none:'#' }}">
 				</div>
+				<div class="w3-container w3-col s7">
+					<h5>{{ m.name }}</h5>
+					<p class="w3-large">Branch: {{m.branch}}</p>
+					<p class="w3-large">Mail Id: {{ m.email }}</p>
+					<div class="w3-accordion w3-pale-blue">
+						<button class="w3-btn-block w3-left-align w3-light-blue accordion-button">Open Bio</button>
+							<div class="w3-accordion-content w3-container">
+								<p class="w3-large">{{m.bio}}</p>
+							</div>
+					</div>
+					<a href="/members/alumni/{{m.username}}"><button style="margin-top:20px;" class="w3-btn w3-large w3-light-blue w3-text-black">See more about {{ m.name }}</button></a>
+				</div>
+				<div class="w3-container w3-col s2">
+					<a href="{{m.linkedin|default_if_none:'#'}}" alt="LinkedIn Account" title="LinkedIn Account"><img src="/static/linkedin.png"></a>
+					<p class= "w3-large" style="padding-top:3px;">Download Resume <a id="download" href="{{m.resume_url|default_if_none:'#'}}"><i class="material-icons">file_download</i></a></p>
+				</div>
+			</div>
 			{% endif %}
 			{% endfor %}
 		</div>
+
+		<script>
+		jQuery(document).ready(function(){
+			$('.accordion-button').click(function() {
+				$(this).next().toggle('slow');
+				$(this).text(function(id, text){
+					return text === "Open Bio" ? "Close Bio" : "Open Bio";
+				})
+				return false;
+			}).next().hide();
+		});
+		</script>
 
 
 {% endblock %}

@@ -15,7 +15,7 @@ footer{
 }
 
 footer p{
-	font-size: 13px;
+	font-size: 17px;
 }
 
 footer p a{
@@ -23,7 +23,6 @@ footer p a{
 }
 
 #logo img{
-	border: 3px solid white;
 	border-radius:70%;
 	height:30px;
 	width:30px;
@@ -111,13 +110,6 @@ hr.fade{
 .year p{
 	font-size: 15px;
 }
-
-/* Expo */
-
-#expo-body a{
-	text-decoration: none;
-}
-
 
 /*ISM animation*/
 #ISM-animation{

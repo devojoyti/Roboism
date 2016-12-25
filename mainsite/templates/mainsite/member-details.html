@@ -1,0 +1,108 @@
+{% extends 'mainsite/base.html' %}
+{% block content %}
+
+<style type="text/css">
+  #_members{
+    background-color: rgb(244,67,54);
+    color: white;
+  }
+</style>
+
+<! user details>
+<div id="userdetails" class="w3-container w3-card-8">
+  <div class="w3-container w3-row-padding student">
+    <div class="w3-container w3-col s2">
+      <img class="profile-pic" src="{{ member.pic_url|default_if_none:'#' }}">
+    </div>
+    <div class="w3-container w3-col s10">
+      <div class="w3-container w3-row-padding">
+        <div class="w3-container w3-col s10">
+          <h3>{{ member.name }}</h3>
+          <p>Branch: {{member.branch}}</p>
+          <p>E-mail id: {{ member.email }}</p>
+          <div class="w3-container w3-border w3-border-blue w3-hover-border-red">
+            <h5>Bio</h5>
+            <p>{{member.bio}}</p>
+          </div>
+        </div>
+        <div class="w3-container w3-col s2">
+          <a href="{{ member.pic_url|default_if_none:'#' }}" alt="LinkedIn Account" title="LinkedIn Account"><img src="/static/linkedin.png"></a>
+          <p style="padding-top:3px;">Show Resume <a id="download" href="{{ member.resume_url|default_if_none:'#' }}" <i class="material-icons">file_download</i></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!user projects>
+<div id="userprojects">
+    <h3 class="w3-center w3-text-deep-orange">Ongoing Projects</h3>
+    {% if ongoing_projects %}
+    {% for p in ongoing_projects %}
+    <div class="userproject-list w3-container w3-row-padding w3-card-8 proj">
+    <h4 class="w3-center">{{p.name}}</h4>
+      <div class="w3-container w3-col s2">
+        <img class="project-pic" src="{{ p.pic_url|default_if_none:'#' }}">
+      </div>
+      <div class="w3-container w3-col s10">
+        <div class="w3-container w3-row">
+          <div class="w3-col s9 w3-container">
+            <div class="w3-border w3-border-blue w3-hover-border-red w3-container">
+              <p>{{p.description}}</p>
+            </div>
+            <a href="{{p.github|default_if_none:'#'}}"><img style="margin-top:20px;" src="/static/github.png"></a>
+          </div>
+          <div class="w3-col s3 w3-container">
+            <div class="w3-container">
+              <p>Contributers</p>
+              <ul style="list-style:none;">
+                {% for c in p.contributers.all %}
+                <li><p class="w3-medium">{{c}}</p></li>
+                {% endfor %}
+              </ul>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    {% else %}
+      <h5 class="w3-center w3-text-deep-orange">No projects to show!</h5>
+    {% endif %}
+    <h3 class="w3-center w3-text-deep-orange">Completed Projects</h3>
+    {% if completed_projects %}
+    {% for p in completed_projects %}
+    <div class="userproject-list w3-container w3-row-padding w3-card-8 proj">
+    <h4 class="w3-center">{{p.name}}</h4>
+      <div class="w3-container w3-col s2">
+        <img class="project-pic" src="{{ p.pic_url|default_if_none:'#' }}">
+      </div>
+      <div class="w3-container w3-col s10">
+        <div class="w3-container w3-row">
+          <div class="w3-col s9 w3-container">
+            <div class="w3-border w3-border-blue w3-hover-border-red w3-container">
+              <p>{{p.description}}</p>
+            </div>
+            <a href="{{p.github|default_if_none:'#'}}"><img style="margin-top:20px;" src="/static/github.png"></a>
+          </div>
+          <div class="w3-col s3 w3-container">
+            <div class="w3-container">
+              <p>Contributers</p>
+              <ul style="list-style:none;">
+                {% for c in p.contributers.all %}
+                <li><p class="w3-medium">{{c}}</p></li>
+                {% endfor %}
+              </ul>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <h5 class="w3-center w3-text-deep-orange">No projects to show!</h5>
+  {% endif %}
+</div>
+
+
+{% endblock %}

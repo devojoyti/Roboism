@@ -6,10 +6,12 @@
 {% block content %}
 
 	<div class="w3-container formclass">
-		<h3>Please Fill your information before proceeding. You can attach resume, profile picture etc. later also from your edit profile section.</h3>
+		<h3>Please Fill your information before proceeding. You can also attach resume, profile picture etc. later from your edit profile section.</h3>
 		<form id="fill_info" class="w3-container" method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
-			{{ details.as_p }}
-		<button type="submit" class="save w3-btn w3-round-xlarge w3-blue w3-hover-red">Save and Proceed</button>
+      <table class="w3-table">
+			 {{ details.as_table }}
+      </table>
+		<button type="submit" class="save w3-btn w3-round w3-blue w3-hover-red">Save and Proceed</button>
 		</form>
 	</div>
 

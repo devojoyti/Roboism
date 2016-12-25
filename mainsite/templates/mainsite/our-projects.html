@@ -1,4 +1,4 @@
-{% extends 'mainsite/base.html' %}
+			{% extends 'mainsite/base.html' %}
 {% block content %}
 		<style type="text/css">
 			#_projects{
@@ -17,19 +17,21 @@
 
 		<div id="project-info" class="w3-container">
 			<h3 class="w3-center">Our Projects</h3>
-			<p>At RoboISM, students are encouraged to come up with new ideas and actively apply them. Hence, RoboISM boasts of large collection of projects in different domains. Right as of now, RoboISM have total {{ count.total }} projects. Anyone can view them and their code (if present), they are all open source on Github. Below are the list of both ongoing and completed projects.</p>
+			<div class="w3-container w3-border w3-border-red w3-hover-border-blue">
+				<p>At RoboISM, students are encouraged to come up with new ideas and actively apply them. Hence, RoboISM boasts of large collection of projects in different domains. Right as of now, RoboISM have total {{ count.total }} projects. Anyone can view them and their code (if present), most of them are open source on Github. Below are the list of both ongoing and completed projects.</p>
+			</div>
 			<div id="project-classify" class="w3-container w3-row-padding">
 				<div class="w3-container w3-col s6">
 					<a href="/projects/completed" class="w3-left" title="completed projects">
-						<h5>Completed Projects</h5>
-						<img class="pic" src="/static/completed.jpg">
+						<h5 class="w3-center">Completed Projects</h5>
+						<img class="pic" src="/static/completed_proj.jpg">
 					</a>
 					<p class="w3-left">Total Projects : {{ count.completed }}</p>
 				</div>
 				<div class="w3-container w3-col s6">
 					<a href="/projects/ongoing" class="w3-right" title="ongoing projects">
-						<h5>Ongoing Projects</h5>
-						<img class="pic" src="/static/ongoing.jpg">
+						<h5 class="w3-center">Ongoing Projects</h5>
+						<img class="pic" src="/static/ongoing_proj.jpg">
 					</a>
 					<p class="w3-right">Total Projects : {{ count.ongoing }}</p>
 				</div>

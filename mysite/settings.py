@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '06&(*7zrj2er6@6^o(0sbdg1^h*k3m46jbk3lp_0v@6(0qk+h+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGIN_REDIRECT_URL = '/profile'
 LOGIN_URL = '/login'
@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'mainsite',
     'django_extensions',
+    'widget_tweaks',
     #'loginfo',
 )
 
@@ -112,3 +113,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+'''
+TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DIRS = (
+    'C:/Documents/Roboism/mainsite/templates',
+)
+'''

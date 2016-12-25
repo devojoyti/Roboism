@@ -1,0 +1,76 @@
+{% extends 'mainsite/base.html' %}
+{% block content %}
+		<style type="text/css">
+			#_contact{
+				background-color: rgb(244,67,54);
+				color: white;
+			}
+		</style>
+
+		<div id="side-nav" class="w3-container">
+			<div class="w3-container">
+				<a href="#" class="w3-left" style="padding-right:20px";><img src="/static/arrow_left.png"></a>
+				<h4 class="w3-left">Members</h4>
+			</div>
+		</div>
+
+		<div id="contact" class="w3-container">
+			<h2 class="w3-center"> We will be happy to hear from you! </h2>
+			<div class="w3-container w3-border w3-border-red w3-hover-border-blue">
+				<p>So you have a technical idea, but don't know how to make it work, and want our help? We will be happy to help you !<br>Or may want to collaborate with us? Yep, we are always looking for friends!<br>Want to know more about our club? Drop a message, we will update you! <br>Or just want to say Hi? We will like to that too!</p>
+			</div>
+			<div style="margin-top:50px;" class="w3-container w3-border w3-border-red w3-hover-border-blue">
+				<h2 class="w3-center">Our Contact Details</h2>
+				<table class="w3-table">
+					<tr>
+						<th><p>RoboISM Core Team Members<p></th>
+						<th><p style="font-weight:normal;">Devojoyti Halder</p></th>
+						<th><p style="font-weight:normal;">9709775980</p></th>
+					</tr>
+					<tr>
+						<th></th>
+						<th><p style="font-weight:normal;">Rishi Garg</p></th>
+						<th><p style="font-weight:normal;">8877799762</p></th>
+					</tr>
+					<tr>
+						<th><p>Also find us at <a id="logo" href="https://www.facebook.com/roboism/"><img src="/static/fb.png"></a> <a id="logo" href="https://www.github.com/RoboISM/"><img src="/static/github.png"></a></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</table>
+			</div>
+
+			<div style="margin-top:50px;"  class="w3-container w3-border w3-border-red w3-hover-border-blue">
+				<h2 class="w3-center">Or Drop a Message!</h2>
+				<div class="w3-container" id="contact-form">
+					<form method="POST" class="w3-container" >{% csrf_token %}
+						{% load widget_tweaks %}
+							<table class="w3-table">
+								<tr>
+									<th style="padding-top:17px;"><p>Name</p></th>
+									<th><p>{{form.name|add_class:'w3-input w3-border inp'}}</p></th>
+								</tr>
+								<tr>
+									<th style="padding-top:17px;"><p>E-Mail</p></th>
+									<th><p>{{form.email|add_class:'w3-input w3-border inp'}}</p></th>
+								</tr>
+								<tr>
+									<th style="padding-top:17px;"><p>Subject</p></th>
+									<th><p>{{form.subject|add_class:'w3-input w3-border inp'}}</p></th>
+								</tr>
+								<tr>
+									<th style="padding-top:17px;"><p>Message</p></th>
+									<th><p>{{form.message|add_class:'w3-input w3-border inp'}}</p></th>
+								</tr>
+								<tr>
+									<th></th>
+									<th><input type="submit" value="Submit" class="w3-btn-block w3-blue w3-hover-red"></th>
+								</tr>
+							</table>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+{% endblock %}
