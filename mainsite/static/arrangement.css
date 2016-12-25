@@ -2,8 +2,8 @@
 
 #foot{
 	position: relative;
-	padding-left: 10%;
-	padding-right: 10%;
+	padding-left: 5%;
+	padding-right: 5%;
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
@@ -23,6 +23,7 @@
 	max-height: 50px;
 	padding-top: 10px;
 }
+
 
 /* Common */
 

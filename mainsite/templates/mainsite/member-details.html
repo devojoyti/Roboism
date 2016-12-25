@@ -12,7 +12,7 @@
 <div id="userdetails" class="w3-container w3-card-8">
   <div class="w3-container w3-row-padding student">
     <div class="w3-container w3-col s2">
-      <img class="profile-pic" src={{ member.pic_url|default_if_none:'#' }}>
+      <img class="profile-pic" src="{{ member.pic_url|default_if_none:'#' }}">
     </div>
     <div class="w3-container w3-col s10">
       <div class="w3-container w3-row-padding">
@@ -26,8 +26,8 @@
           </div>
         </div>
         <div class="w3-container w3-col s2">
-          <a href={{member.linkedin}} alt="LinkedIn Account" title="LinkedIn Account"><img src="/static/linkedin.png"></a>
-          <p style="padding-top:3px;">Show Resume <a id="download" href={{ member.resume_url|default_if_none:'#' }} <i class="material-icons">file_download</i></a></p>
+          <a href="{{ member.pic_url|default_if_none:'#' }}" alt="LinkedIn Account" title="LinkedIn Account"><img src="/static/linkedin.png"></a>
+          <p style="padding-top:3px;">Show Resume <a id="download" href="{{ member.resume_url|default_if_none:'#' }}" <i class="material-icons">file_download</i></a></p>
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
     <div class="userproject-list w3-container w3-row-padding w3-card-8 proj">
     <h4 class="w3-center">{{p.name}}</h4>
       <div class="w3-container w3-col s2">
-        <img class="project-pic" src={{ p.pic_url|default_if_none:'#' }}>
+        <img class="project-pic" src="{{ p.pic_url|default_if_none:'#' }}">
       </div>
       <div class="w3-container w3-col s10">
         <div class="w3-container w3-row">
@@ -50,7 +50,7 @@
             <div class="w3-border w3-border-blue w3-hover-border-red w3-container">
               <p>{{p.description}}</p>
             </div>
-            <a href="{{p.github}}"><img style="margin-top:20px;" src="/static/github.png"></a>
+            <a href="{{p.github|default_if_none:'#'}}"><img style="margin-top:20px;" src="/static/github.png"></a>
           </div>
           <div class="w3-col s3 w3-container">
             <div class="w3-container">
@@ -75,7 +75,7 @@
     <div class="userproject-list w3-container w3-row-padding w3-card-8 proj">
     <h4 class="w3-center">{{p.name}}</h4>
       <div class="w3-container w3-col s2">
-        <img class="project-pic" src={{ p.pic_url|default_if_none:'#' }}>
+        <img class="project-pic" src="{{ p.pic_url|default_if_none:'#' }}">
       </div>
       <div class="w3-container w3-col s10">
         <div class="w3-container w3-row">
@@ -83,7 +83,7 @@
             <div class="w3-border w3-border-blue w3-hover-border-red w3-container">
               <p>{{p.description}}</p>
             </div>
-            <a href="{{p.github}}"><img style="margin-top:20px;" src="/static/github.png"></a>
+            <a href="{{p.github|default_if_none:'#'}}"><img style="margin-top:20px;" src="/static/github.png"></a>
           </div>
           <div class="w3-col s3 w3-container">
             <div class="w3-container">

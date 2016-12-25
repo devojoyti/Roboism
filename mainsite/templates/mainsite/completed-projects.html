@@ -12,7 +12,7 @@
 			{% for p in project %}
 			<div id="projects" class="w3-container w3-row-padding w3-card-8">
 				<div class="w3-col s3 w3-container">
-					<img class="project-pic" src={{ p.pic_url|default_if_none:'#' }}>
+					<img class="project-pic" src="{{ p.pic_url|default_if_none:'#' }}">
 				</div>
 				<div class="w3-col s7 w3-container">
 					<h3>{{ p.name }}</h3>
@@ -28,7 +28,7 @@
 					</ul>
 				</div>
 				<div class="w3-col s2 w3-container">
-					<p class="w3-right">Find it at Github <a href="{{p.github}}"><img src="/static/github.png" alt="github" title="github"></a></p>
+					<p class="w3-right">Find it at Github <a href="{{p.github|default_if_none:'#'}}"><img src="/static/github.png" alt="github" title="github"></a></p>
 				</div>
 				<hr class="fade">
 			</div>

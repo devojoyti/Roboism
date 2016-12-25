@@ -25,7 +25,7 @@ SECRET_KEY = '06&(*7zrj2er6@6^o(0sbdg1^h*k3m46jbk3lp_0v@6(0qk+h+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGIN_REDIRECT_URL = '/profile'
 LOGIN_URL = '/login'

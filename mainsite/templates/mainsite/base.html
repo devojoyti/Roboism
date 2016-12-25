@@ -13,6 +13,7 @@
 		<script src="/static/jquery.backstretch.min.js"></script>
 		<script type="text/javascript" src="/static/dropdown-animation.js"></script>
 		<script type="text/javascript" src="/static/login.js"></script>
+		<script type="text/javascript" src="/static/responsive-nav.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Cormorant+Infant|Trirong" rel="stylesheet">
 		<script type="text/javascript">
 			$(document).ready(function(){
@@ -36,52 +37,53 @@
 			</div>
 
 			<! navigation bar>
-			<div id= "nav-bar" class="w3-right">
-				<ul class="w3-navbar">
-					<li>
-						<a id="_home" href="/" class="w3-hover-black">Home</a>
-					</li>
-					<li>
-						<a id="_about" href="/about-us" class="w3-hover-black">About Us</a>
-					</li>
-					<li class="dropdown">
-						<a id="_projects" href="/projects" class="w3-hover-black">Our Projects</a>
-						<div class="w3-dropdown-content w3-card-4 nav-dropdown">
-							<a href="/projects/ongoing" class="w3-hover-black">Ongoing Projects</a>
-							<a href="/projects/completed" class="w3-hover-black">Completed Projects</a>
-						</div>
-					</li>
-					<li>
-						<a id="_achievements" href="/achievements" class="w3-hover-black">Our Achievements</a>
-					</li>
-					<li>
-						<a id="_tutorials" href="/tutorials" class="w3-hover-black">Tutorials</a>
-					</li>
-					<li class="dropdown">
-						<a id="_members" href="/members" class="w3-hover-black">Members</a>
-						<div class="w3-dropdown-content w3-card-4 nav-dropdown">
-					    	<a href="/members/active" class="w3-hover-black">Active Members</a>
-					    	<a href="/members/alumni" class="w3-hover-black">Alumni</a>
-					    </div>
-					</li>
-					<li>
-						<a id="_contact" href="/contact" class="w3-hover-black">Contact Us</a>
-					</li>
-					<li {% if user.is_authenticated %} class="dropdown" {% endif %}>
-						{% if not user.is_authenticated %}
-								<a href="/login" class="w3-hover-black">Login</a>
-						{% else %}
-							<a class="w3-hover-black">Hello {{ user.username }}!</a>	
-								<div class="w3-dropdown-content w3-card-4 nav-dropdown">
-									<a class="w3-hover-black" href="/profile/">Profile</a>
-									<a class="w3-hover-black" href="/logout/">Logout</a>
-							  </div>
-						{% endif %}
-
-					</li>
-				</ul>
+			<div class="w3-col s10">
+				<div id= "nav-bar" class="w3-right">
+					<ul class="w3-navbar" id="topnav">
+						<li>
+							<a id="_home" href="/" class="w3-hover-black">Home</a>
+						</li>
+						<li>
+							<a id="_about" href="/about-us" class="w3-hover-black">About Us</a>
+						</li>
+						<li class="dropdown">
+							<a id="_projects" href="/projects" class="w3-hover-black">Our Projects</a>
+							<div class="w3-dropdown-content w3-card-4 nav-dropdown">
+								<a href="/projects/ongoing" class="w3-hover-black">Ongoing Projects</a>
+								<a href="/projects/completed" class="w3-hover-black">Completed Projects</a>
+							</div>
+						</li>
+						<li>
+							<a id="_achievements" href="/achievements" class="w3-hover-black">Our Achievements</a>
+						</li>
+						<li>
+							<a id="_tutorials" href="/tutorials" class="w3-hover-black">Tutorials</a>
+						</li>
+						<li class="dropdown">
+							<a id="_members" href="/members" class="w3-hover-black">Members</a>
+							<div class="w3-dropdown-content w3-card-4 nav-dropdown">
+						    	<a href="/members/active" class="w3-hover-black">Active Members</a>
+						    	<a href="/members/alumni" class="w3-hover-black">Alumni</a>
+						    </div>
+						</li>
+						<li>
+							<a id="_contact" href="/contact" class="w3-hover-black">Contact Us</a>
+						</li>
+						<li {% if user.is_authenticated %} class="dropdown" {% endif %}>
+							{% if not user.is_authenticated %}
+									<a href="/login" class="w3-hover-black">Login</a>
+							{% else %}
+								<a class="w3-hover-black">Hello {{ user.username }}!</a>
+									<div class="w3-dropdown-content w3-card-4 nav-dropdown">
+										<a class="w3-hover-black" href="/profile/">Profile</a>
+										<a class="w3-hover-black" href="/logout/">Logout</a>
+								  </div>
+							{% endif %}
+						</li>
+					</ul>
+				</div>
 			</div>
-		</div>
+	</div>
 
             {% block content %}
             {% endblock %}
@@ -107,7 +109,7 @@
 					<a href="/developers" class="w3-text-red w3-hover-text-blue">Meet the developers team</a>
 				</p>
 			</div>
-			<div class="w3-container w3-col s6">
+			<div class="w3-container w3-col s5">
 				<h5 class="w3-center">Details for Nerds</h5>
 				<table class="w3-table">
 					<tr>
@@ -120,7 +122,7 @@
 					</tr>
 				</table>
 			</div>
-			<div class="w3-col s3 w3-container">
+			<div class="w3-col s4 w3-container">
 				<div class="w3-right">
 					<h5>Find us at</h5>
 					<a id="logo" href="https://www.facebook.com/roboism/"><img src="/static/fb.png"></a>
@@ -129,5 +131,4 @@
 			</div>
 		</footer>
 	</body>
-
 </html>

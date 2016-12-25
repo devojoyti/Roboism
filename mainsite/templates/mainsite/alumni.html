@@ -17,7 +17,7 @@
 			{% if m.active == False %}
 			<div class="w3-container w3-row-padding w3-card-4 student">
 				<div class="w3-container w3-col s3">
-					<img class="profile-pic" src={{ m.pic_url|default_if_none:'#' }}>
+					<img class="profile-pic" src="{{ m.pic_url|default_if_none:'#' }}">
 				</div>
 				<div class="w3-container w3-col s7">
 					<h5>{{ m.name }}</h5>
@@ -32,8 +32,8 @@
 					<a href="/members/alumni/{{m.username}}"><button style="margin-top:20px;" class="w3-btn w3-large w3-light-blue w3-text-black">See more about {{ m.name }}</button></a>
 				</div>
 				<div class="w3-container w3-col s2">
-					<a href="{{m.linkedin}}" alt="LinkedIn Account" title="LinkedIn Account"><img src="/static/linkedin.png"></a>
-					<p class= "w3-large" style="padding-top:3px;">Download Resume <a id="download" href=""><i class="material-icons">file_download</i></a></p>
+					<a href="{{m.linkedin|default_if_none:'#'}}" alt="LinkedIn Account" title="LinkedIn Account"><img src="/static/linkedin.png"></a>
+					<p class= "w3-large" style="padding-top:3px;">Download Resume <a id="download" href="{{m.resume_url|default_if_none:'#'}}"><i class="material-icons">file_download</i></a></p>
 				</div>
 			</div>
 			{% endif %}
