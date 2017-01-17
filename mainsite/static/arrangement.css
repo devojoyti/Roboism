@@ -1,9 +1,9 @@
-* Common */
+/* Common */
 
 #foot{
 	position: relative;
-	padding-left: 20%;
-	padding-right: 20%;
+	padding-left: 5%;
+	padding-right: 5%;
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
@@ -13,9 +13,15 @@
 	margin: 0;
 }
 
-#login form{
+#login{
 	padding-top: 10px;
 	padding-bottom: 20px;
+}
+
+#toplogo img{
+	position: absolute;
+	max-height: 50px;
+	padding-top: 10px;
 }
 
 
@@ -112,6 +118,10 @@
 	overflow: hidden;
 }
 
+.pic-btn img{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .pic{
 	display: block;
 	margin: auto;
@@ -137,17 +147,24 @@
 
 /* completed projects */
 
+.project-pic{
+	max-width: 200px;
+}
+
 #project-list{
 	position: relative;
-	padding-right: 20%;
-	padding-left: 20%;
+	padding-right: 5%;
+	padding-left: 5%;
+	padding-top: 100px;
+	padding-bottom: 50px;
 }
 
 #projects{
 	position: relative;
 	padding-top: 50px;
 	padding-bottom: 50px;
-
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 
@@ -158,8 +175,11 @@
 
 #member-info{
 	position: relative;
-	padding-right: 20%;
-	padding-left: 20%;
+	padding-right: 10%;
+	padding-left: 10%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 100px;
 }
 
 #member-classify{
@@ -186,10 +206,19 @@
 
 /* active members */
 
+.profile-pic{
+		max-width: 200px;
+}
+
+#heading{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
 .year{
 	position: relative;
-	padding-right: 20%;
-	padding-left: 20%;
+	padding-right: 5%;
+	padding-left: 5%;
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
@@ -206,6 +235,26 @@
 	top:5px;
 }
 
+/* Contact Us */
+
+#contact{
+		position: relative;
+		padding-top: 100px;
+		padding-bottom: 100px;
+		margin-left: 5%;
+		margin-right: 5%;
+		padding-left: 10%;
+		padding-right: 10%;
+}
+#contact-form{
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-bottom: 50px;
+	padding-top: 10px;
+}
+.inp{
+	font-weight: normal;
+}
 /* registration */
 
 #registration{
@@ -216,7 +265,7 @@
 	padding-bottom: 200px;
 }
 
-#login label, input{
+#login input{
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -235,30 +284,59 @@
 
 #userdetails{
 	position: relative;
+	margin-top: 100px;
 	padding-top: 50px;
+	margin-left: 5%;
+	margin-right: 5%;
 	padding-bottom: 50px;
-	padding-left: 20%;
-	padding-right: 20%;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 #userprojects{
 	position: relative;
+	margin-top: 50px;
+	margin-bottom: 50px;
 	padding-top: 50px;
 	padding-bottom: 50px;
-	padding-left: 20%;
-	padding-right: 20%;
 }
 
+.userproject-list{
+	position: relative;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
 /* Edit Profile */
 
 .formclass{
 	position: relative;
-	padding-top: 100px;
+	padding-top: 50px;
 	padding-bottom: 50px;
-	padding-left: 20%;
-	padding-right: 20%;
+	padding-left: 5%;
+	padding-right: 5%;
 }
 
+/* Misc */
+
+#dev-team{
+	position: relative;
+	margin-left: 5%;
+	margin-right: 5%;
+	padding-left: 10%;
+	padding-right: 10%;
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+#dev-team p{
+	font-weight: normal;
+}
 
 /*ISM animation*/
 #ISM-animation{
